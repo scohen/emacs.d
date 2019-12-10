@@ -1,4 +1,4 @@
-loaddefs.el*
+loaddefs.el
 backups/*
 auto-save-list
 custom.el
@@ -11,7 +11,6 @@ thumbs/*
 oddmuse/*
 .newsrc-dribble
 .nnmail-cache
-/#.newsrc-dribble#
 .svn
 .DS_Store
 image-dired/
@@ -19,11 +18,10 @@ elim/
 elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc~
 session*
 tramp
-\#*
 history
 elpa
+.cache/*
 .smex-items
-*.el
 .lsp-session-v1
 .python_environments/
 ac-comphist.dat
