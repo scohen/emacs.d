@@ -34,3 +34,4 @@ forge-database.sqlite
 .python-environments
 magithub
 vendor
+transient

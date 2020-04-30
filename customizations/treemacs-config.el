@@ -19,7 +19,7 @@
           treemacs-file-event-delay              5000
           treemacs-file-extension-regex          treemacs-last-period-regex-value
           treemacs-file-follow-delay             0.2
-          treemacs-follow-after-init             t
+          treemacs-follow-after-init             nil
           treemacs-git-command-pipe              ""
           treemacs-goto-tag-strategy             'refetch-index
           treemacs-indentation                   2
@@ -52,7 +52,7 @@
 
     (treemacs-resize-icons 16)
 
-    (treemacs-follow-mode t)
+    (treemacs-follow-mode -1)
     (treemacs-filewatch-mode t)
     (treemacs-fringe-indicator-mode t)
     (pcase (cons (not (null (executable-find "git")))
@@ -63,12 +63,7 @@
        (treemacs-git-mode 'simple))))
   :bind
   (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
-        ("C-x t t"   . treemacs)
-        ("C-x t B"   . treemacs-bookmark)
-        ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
+        ("M-0"       . treemacs-select-window)))
 
 (use-package treemacs-projectile
   :after treemacs projectile

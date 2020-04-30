@@ -9,7 +9,7 @@
 (add-to-list 'exec-path "/Users/steve/Projects/elixir-ls/release")
 
 (load "global.el")
-(load "elixir.el")
+(load "treemacs-config.el")
 (load "rust.el")
 (load "python-elpy.el")
 (load "markdown.el")
@@ -19,6 +19,9 @@
 (load "javascript.el")
 (load "typescript.el")
 (load "web.el")
+(load "custom-mmm-mode.el")
+(load "elixir.el")
+(load "yaml.el")
 
 (cond
  ((string-equal system-type "windows-nt")

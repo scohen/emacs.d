@@ -21,19 +21,6 @@
   (untabify (point-min) (point-max))
   (elixir-format))
 
-(defun elixir-mode-hooks ()
-  ;; "Kill Auto fill and burn the corpse"
-  (auto-fill-mode -1)
-
- ;; (alchemist-mode)
-  (company-mode)
-  ;; idle highlight mode highlights the word under the cursor
-  (idle-highlight-mode 1)
-  (smartparens-mode)
-  (flycheck-mix-setup)
-  (flycheck-mode)
-  )
-
 
 (use-package elixir-mode
   :init
@@ -44,7 +31,20 @@
   (add-hook 'elixir-format-hook 'set-formatter-exs)
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'clean-elixir nil t)))
-  (add-hook 'elixir-mode-hook 'elixir-mode-hooks)
+  (add-hook 'elixir-mode-hook
+            (lambda()
+              ;; "Kill Auto fill and burn the corpse"
+              (auto-fill-mode -1)
+              (mmm-mode t)
+              ;; (alchemist-mode)
+              (company-mode)
+              ;; idle highlight mode highlights the word under the cursor
+              (idle-highlight-mode 1)
+              (smartparens-mode)
+              (flycheck-mix-setup)
+              (flycheck-mode)
+              ))
+  (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
 
   :config
   (use-package eglot :ensure t)

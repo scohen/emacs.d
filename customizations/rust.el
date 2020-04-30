@@ -1,6 +1,7 @@
 
 ;;; Code:
 (require 'rust-mode)
+(require 'subr-x)
 (setq racer-rust-src-path
       (string-trim
        (shell-command-to-string

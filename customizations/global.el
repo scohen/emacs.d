@@ -47,6 +47,8 @@
   :ensure t
   :diminish company-mode
   :hook
+  (prog-mode . yas-minor-mode)
+  :hook
   (prog-mode . global-company-mode)
   :config
   (add-to-list 'company-backends '(company-capf company-dabbrev))
@@ -61,17 +63,11 @@
   :ensure t
   :after company
   :commands company
+  :custom
+  (lsp-enable-file-watchers nil)
   :config
   (push 'company-lsp company-backends))
 
-
-(use-package lsp-mode
-  :disabled
-  :ensure t
-  :diminish lsp-mode
-  :bind
-  ("<f7>" . lsp-format-buffer)
-  :init (lsp-mode))
 
 (use-package lsp-imenu
   :after lsp-mode
@@ -84,9 +80,9 @@
   :diminish lsp-ui
   :init (lsp-ui-mode)
   :config
-  (setq lsp-ui-peek-enable nil)
-  (setq lsp-ui-sideline-enable nil)
-  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-doc-enable t)
   (setq lsp-ui-flycheck-enable t))
 
 
@@ -95,14 +91,21 @@
   :diminish lsp-mode
   :bind
   (("M-." . lsp-find-definition)
-   ("M-," . lsp-find-references))
+   ("M-," . lsp-find-references)
+   ("<f7>" . lsp-format-buffer)
+   )
   :hook
-  (elixir-mode . lsp))
+  (js2-mode . lsp)
+  (elixir-mode . lsp)
+  :init
+  '(lsp-mode))
 
 ;; end company config
-(add-hook 'after-init-hook 'global-flycheck-mode)
+
 
 ;; flycheck config
+
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; end flycheck config
 

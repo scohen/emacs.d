@@ -4,12 +4,15 @@
 
 (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 (setq web-mode-engines-alist
-      '(
-        ("elixir"  ."\\.eex\\'"),
+      '(("elixir"  ."\\.eex\\'"),
         ("css"     ."\\.sass\\'")
         ))
+
 
 (setq web-mode-extra-constants '(("elixir" . ("for" "case"))))
 (setq web-mode-extra-constants '(("erlang" . ("for" "case"))))
@@ -30,9 +33,7 @@
 
   )
 
-(defun web-mode-hooks ()
-  (smartparens-mode)
-  (prettier-js-mode))
+(defun web-mode-hooks ())
 
 (add-hook 'web-mode-hook 'web-mode-customizations)
 (add-hook 'web-mode-hook 'web-mode-hooks)
