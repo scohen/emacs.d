@@ -3,16 +3,15 @@
 ;; web mode for eex files
 
 (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (setq web-mode-engines-alist
       '(("elixir"  ."\\.eex\\'"),
+        ("elixir" ."\\.leex\\'"),
         ("css"     ."\\.sass\\'")
         ))
-
 
 (setq web-mode-extra-constants '(("elixir" . ("for" "case"))))
 (setq web-mode-extra-constants '(("erlang" . ("for" "case"))))

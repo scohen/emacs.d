@@ -82,7 +82,7 @@
   :config
   (setq lsp-ui-peek-enable t)
   (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-flycheck-enable t))
 
 

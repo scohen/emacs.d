@@ -11,7 +11,7 @@
     :back "^~~~$")))
 
 (mmm-add-classes
-  '((elixir-eex
+  '((elixir-leex
     :submode web-mode
     :face mmm-declaration-submode-face
     :front "^.*?\~L\"\"\""
@@ -78,3 +78,4 @@
 (add-to-list 'mmm-mode-ext-classes-alist '(markdown-mode nil markdown-elixir))
 (add-to-list 'mmm-mode-ext-classes-alist '(markdown-mode nil markdown-js))
 (add-to-list 'mmm-mode-ext-classes-alist '(elixir-mode nil elixir-eex))
+(add-to-list 'mmm-mode-ext-classes-alist '(elixir-mode nil elixir-leex))

@@ -1,7 +1,8 @@
 (require 'js2-mode)
 (require 'xref-js2)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (setq js2-basic-offset 2)
 (setq js-indent-level 2)
