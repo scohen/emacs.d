@@ -1,9 +1,5 @@
-;; alchemist
-;; (add-to-list 'load-path "~/.emacs.d/vendor/alchemist.el/")
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-elixir/")
 (require 'smartparens-config)
-
-;; (setq alchemist-help-docs-ansi-color-enabled t)
 
 (defun set-formatter-exs ()
   (if (projectile-project-p)
@@ -36,7 +32,6 @@
               ;; "Kill Auto fill and burn the corpse"
               (auto-fill-mode -1)
               (mmm-mode t)
-              ;; (alchemist-mode)
               (company-mode)
               ;; idle highlight mode highlights the word under the cursor
               (idle-highlight-mode 1)
@@ -49,7 +44,6 @@
   :config
   (use-package eglot :ensure t)
   (use-package flycheck-mix :ensure t)
-  (use-package alchemist :ensure t)
   (use-package smartparens :ensure t)
   )
 
