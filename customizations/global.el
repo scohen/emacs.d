@@ -51,8 +51,7 @@
   :hook
   (prog-mode . global-company-mode)
   :config
-  (add-to-list 'company-backends '(company-capf company-dabbrev))
-
+  (add-to-list 'company-backends '(company-capf))
   (setq company-idle-delay 0.2)
   (setq company-minimum-prefix-length 2)
   (setq company-echo-delay 0)

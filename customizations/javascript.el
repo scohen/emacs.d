@@ -12,10 +12,21 @@
      "/Users/steve/.vscode/extensions/dbaeumer.vscode-eslint-2.0.15/server/out/eslintServer.js"
      "--stdio"))
 
+(defun set-prettier-config ()
+  (defvar prettier-js-args)
+  (if (projectile-project-p)
+      (let ((prettier-config-dir (locate-dominating-file buffer-file-name "prettier.config.js")))
+        (if prettier-config-dir
+            (defvar prettier-js-args
+                  (list "--config prettier.config.js"
+                        "--write"))
+          (setq prettier-js-args nil)))
+    (setq prettier-js-args nil)))
+
+
 ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 ;; unbind it.
 (define-key js-mode-map (kbd "M-.") nil)
-
 (add-hook 'js2-mode-hook #'lsp)
 (add-hook 'js2-mode-hook
           (lambda ()
