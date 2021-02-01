@@ -36,14 +36,11 @@
               ;; idle highlight mode highlights the word under the cursor
               (idle-highlight-mode 1)
               (smartparens-mode)
-              (flycheck-mix-setup)
               (flycheck-mode)
               ))
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
 
   :config
-  (use-package eglot :ensure t)
-  (use-package flycheck-mix :ensure t)
   (use-package smartparens :ensure t)
   )
 
