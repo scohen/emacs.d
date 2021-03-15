@@ -49,7 +49,7 @@
  '(lsp-elixir-mix-env "dev")
  '(lsp-enable-file-watchers nil)
  '(package-selected-packages
-   '(tide rjsx-mode flycheck elpygen racer flycheck-credo flycheck-mix ripgrep jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup python-mode idle-highlight smartparens company-jedi virtualenvwrapper 0blayout magit-lfs magithub elixir-mode xref-js2 js2-refactor graphql-mode yaml-mode py-autopep8 python-pylint pyenv-mode use-package rainbow-mode js2-mode web-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
+   '(ansible ansible-vault company-ansible eslint-fix tide rjsx-mode flycheck elpygen racer flycheck-credo flycheck-mix ripgrep jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup python-mode idle-highlight smartparens company-jedi virtualenvwrapper 0blayout magit-lfs magithub elixir-mode xref-js2 js2-refactor graphql-mode yaml-mode py-autopep8 python-pylint pyenv-mode use-package rainbow-mode js2-mode web-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

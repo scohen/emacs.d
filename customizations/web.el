@@ -1,26 +1,24 @@
 (require 'web-mode)
 
-;; web mode for eex files
+(use-package web-mode
+  :init
+  ;; web mode for eex files
 
-(add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-(setq web-mode-engines-alist
-      '(("elixir"  ."\\.eex\\'"),
-        ("elixir" ."\\.leex\\'"),
-        ("css"     ."\\.sass\\'")
-        ))
+  (setq web-mode-engines-alist
+        '(("elixir"  ."\\.eex\\'"),
+          ("elixir" ."\\.leex\\'"),
+          ("css"     ."\\.sass\\'")
+          ))
 
-(setq web-mode-extra-constants '(("elixir" . ("for" "case"))))
-(setq web-mode-extra-constants '(("erlang" . ("for" "case"))))
-(setq web-mode-enable-current-column-highlight t)
-(setq web-mode-enable-current-element-highlight t)
-
-(defun web-mode-customizations ()
-  "Web mode customizations."
-
+  (setq web-mode-extra-constants '(("elixir" . ("for" "case"))))
+  (setq web-mode-extra-constants '(("erlang" . ("for" "case"))))
+  (setq web-mode-enable-current-column-highlight t)
+  (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
@@ -28,13 +26,14 @@
   (setq web-mode-enable-auto-closing t)
   (setq web-mode-enable-auto-pairing t)
 
+  :bind
+  (
+   ("C-t w" . 'web-mode-element-wrap)))
 
 
-  )
 
-(defun web-mode-hooks ())
 
-(add-hook 'web-mode-hook 'web-mode-customizations)
-(add-hook 'web-mode-hook 'web-mode-hooks)
+
+
 (eval-after-load 'web-mode
        '(add-hook 'web-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix))))
