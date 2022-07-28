@@ -3,7 +3,7 @@
 ;;; Code:
 (ido-mode 1)
 (ido-everywhere 1)
-(projectile-global-mode)
+(projectile-mode)
 
 (menu-bar-mode 1)
 (tool-bar-mode 1)
@@ -17,7 +17,6 @@
                     :weight 'normal)
 
 
-;;(setq projectile-switch-project-action 'neotree-projectile-action)
 (setq projectile-enable-caching t)
 (setq text-mode-hook
 	'(lambda nil
@@ -40,7 +39,22 @@
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
-(add-hook 'focus-out-hook 'save-all)
+
+(add-function :after after-focus-change-function #'save-all)
+
+(use-package exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
+;; flycheck config
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :hook
+  (prog-mode . flyspell-prog-mode))
+
+;; end flycheck config
+
 
 ;; Company configuration
 (use-package company
@@ -50,23 +64,22 @@
   (prog-mode . yas-minor-mode)
   :hook
   (prog-mode . global-company-mode)
-  :config
-  (add-to-list 'company-backends '(company-capf))
-  (setq company-idle-delay 0.2)
+ :config
+(setq company-backends '(company-capf
+                         company-keywords
+                         company-semantic
+                         company-files
+                         company-etags
+                         company-elisp
+                         company-irony
+                         company-jedi
+                         company-yasnippet))
+  (setq company-idle-delay 0.1)
   (setq company-minimum-prefix-length 2)
   (setq company-echo-delay 0)
+
   (global-company-mode 1)
   )
-
-(use-package company-lsp
-  :ensure t
-  :after company
-  :commands company
-  :custom
-  (lsp-enable-file-watchers nil)
-  :config
-  (push 'company-lsp company-backends))
-
 
 (use-package lsp-imenu
   :after lsp-mode
@@ -78,15 +91,19 @@
   :after lsp-mode
   :diminish lsp-ui
   :init (lsp-ui-mode)
+  :hook ((lsp-mode . lsp-ui-mode))
   :config
   (setq lsp-ui-peek-enable t)
   (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-flycheck-enable t))
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-enable-file-watchers nil)
+  )
 
 
 (use-package lsp-mode
   :ensure t
+  :custom
+  (lsp-elixir-server-command '("~/bin/language_server.sh"))
   :diminish lsp-mode
   :bind
   (("M-." . lsp-find-definition)
@@ -102,11 +119,6 @@
 ;; end company config
 
 
-;; flycheck config
-
-(add-hook 'after-init-hook 'global-flycheck-mode)
-
-;; end flycheck config
 
 ;; Projectile prefix
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -118,7 +130,7 @@
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
-(global-set-key (kbd "C-x t") 'neotree-toggle)
+(global-set-key (kbd "C-x t") 'treemacs)
 (global-set-key (kbd "C-x r g") 'projectile-ripgrep)
 (global-set-key (kbd "M-<right>") 'sp-forward-sexp)
 (global-set-key (kbd "M-<left>") 'sp-backward-sexp)

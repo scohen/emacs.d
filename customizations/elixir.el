@@ -1,5 +1,4 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-elixir/")
-(require 'smartparens-config)
 
 (defun set-formatter-exs ()
   (if (projectile-project-p)
@@ -15,12 +14,11 @@
   (interactive)
   (delete-trailing-whitespace)
   (untabify (point-min) (point-max))
-  (elixir-format))
+  (lsp-format-buffer))
 
 
 (use-package elixir-mode
   :init
-
   (remove-hook 'text-mode-hook 'turn-on-auto-fill)
 
   (add-hook 'elixir-mode-hook #'lsp)
@@ -42,6 +40,5 @@
 
   :config
   (use-package smartparens :ensure t)
+  (use-package smartparens-config)
   )
-
-(require 'elixir-mode)
