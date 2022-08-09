@@ -1,28 +1,52 @@
 
 ;;; Code:
-(require 'rust-mode)
-(require 'subr-x)
-(setq racer-rust-src-path
-      (string-trim
-       (shell-command-to-string
-        "echo `~/.cargo/bin/rustc --print sysroot`/lib/rustlib/src/rust/src")))
 
-(setq exec-path (append exec-path  '("~/.cargo/bin")))
-(defun rust-mode-hooks ()
-  (auto-fill-mode -1)
-  (eldoc-mode)
-  (flycheck-mode)
-  (idle-highlight-mode 1)
-  (racer-mode)
-  (company-mode)
-  (smartparens-mode))
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+      (indent-for-tab-command)))
 
-(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-(add-hook 'rust-mode-hook 'rust-mode-hooks)
-(with-eval-after-load 'rust-mode
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(defvar racer-rust-src-path)
+;; finds all Cargo.toml files in your current project and returns a vector of them
+(defun scohen/rust-find-project-config ()
+  (let* ((project-root (projectile-project-root))
+        (found-cargo-files
+         (directory-files-recursively project-root "Cargo.toml")))
+    (vconcat found-cargo-files)))
 
-(defvar company-tooltip-align-annotations)
-(setq company-tooltip-align-annotations t)
-(setq rust-format-on-save t)
+
+
+(use-package rustic
+  :ensure
+  :after  (projectile)
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status)
+              ("<tab>" . tab-indent-or-complete)
+              ("TAB" . tab-indent-or-complete)
+              )
+  :config
+
+  (setq rustic-format-on-save t)
+  (setq lsp-rust-analyzer-linked-projects (scohen/rust-find-project-config))
+  (add-hook 'rustic-mode-hook 'scohen/rustic-mode-hook))
+
+(defun scohen/rustic-mode-hook ()
+  ;; so that run C-c C-c C-r works without having to confirm, but don't try to
+  ;; save rust buffers that are not file visiting. Once
+  ;; https://github.com/brotzeit/rustic/issues/253 has been resolved this should
+  ;; no longer be necessary.
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t)
+    (flycheck-mode)
+    (company-mode)
+    (auto-fill-mode -1)
+    (idle-highlight-mode)
+    (smartparens-mode)
+    ))
