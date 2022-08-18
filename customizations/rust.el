@@ -35,6 +35,7 @@
 
   (setq rustic-format-on-save t)
   (setq lsp-rust-analyzer-linked-projects (scohen/rust-find-project-config))
+  (setq lsp-rust-analyzer-cargo-watch-command "clippy")
   (add-hook 'rustic-mode-hook 'scohen/rustic-mode-hook))
 
 (defun scohen/rustic-mode-hook ()

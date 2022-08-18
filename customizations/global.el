@@ -126,7 +126,6 @@
 
 ;; custom keys
 (global-set-key (kbd "C-x /") 'comment-dwim)
-(global-set-key (kbd "C-x d") 'neotree-dir)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
