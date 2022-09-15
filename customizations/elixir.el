@@ -1,5 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-elixir/")
-
 (defun set-formatter-exs ()
   (if (projectile-project-p)
       (let ((formatter-exs (locate-dominating-file buffer-file-name ".formatter.exs")))
@@ -20,8 +18,6 @@
 (use-package elixir-mode
   :init
   (remove-hook 'text-mode-hook 'turn-on-auto-fill)
-
-  (add-hook 'elixir-mode-hook #'lsp)
   (add-hook 'elixir-format-hook 'set-formatter-exs)
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'clean-elixir nil t)))
@@ -37,8 +33,10 @@
               (flycheck-mode)
               ))
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
-
+  :hook
+  (elixir-mode . lsp)
+  :custom
+  (lsp-elixir-server-command '("~/bin/language_server.sh"))
   :config
   (use-package smartparens :ensure t)
-  (use-package smartparens-config)
-  )
+  (use-package smartparens-config))

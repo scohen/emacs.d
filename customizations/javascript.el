@@ -2,6 +2,8 @@
   :ensure t)
 
 (use-package js2-mode
+  :hook
+  (js2-mode . lsp)
   :bind (:map js-mode-map
               ("M-." . nil)
               ("C-t w" . 'web-mode-element-wrap)

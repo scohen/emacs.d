@@ -4,6 +4,7 @@
       mac-control-modifier 'control
       mac-option-modifier 'none)
 
-(use-package exec-path-from-shell
-  :config
-  (exec-path-from-shell-initialize))
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))

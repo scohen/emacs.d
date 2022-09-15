@@ -42,8 +42,11 @@
 
 (add-function :after after-focus-change-function #'save-all)
 
-(use-package exec-path-from-shell)
-(exec-path-from-shell-initialize)
+(use-package exec-path-from-shell
+  :ensure
+  :init
+  (exec-path-from-shell-initialize))
+
 
 ;; flycheck config
 
@@ -78,8 +81,9 @@
   (setq company-minimum-prefix-length 2)
   (setq company-echo-delay 0)
 
-  (global-company-mode 1)
-  )
+  (global-company-mode 1))
+
+
 
 (use-package lsp-imenu
   :after lsp-mode
@@ -102,17 +106,12 @@
 
 (use-package lsp-mode
   :ensure t
-  :custom
-  (lsp-elixir-server-command '("~/bin/language_server.sh"))
   :diminish lsp-mode
   :bind
   (("M-." . lsp-find-definition)
    ("M-," . lsp-find-references)
    ("<f7>" . lsp-format-buffer)
    )
-  :hook
-  (js2-mode . lsp)
-  (elixir-mode . lsp)
   :init
   '(lsp-mode))
 

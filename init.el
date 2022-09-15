@@ -9,7 +9,6 @@
 
 (load "global.el")
 (load "treemacs-config.el")
-(load "rust.el")
 (load "python-elpy.el")
 (load "markdown.el")
 (load "go.el")
@@ -19,7 +18,9 @@
 (load "web.el")
 (load "custom-mmm-mode.el")
 (load "elixir.el")
-(load "yaml.el")
+(load "yaml-customizations.el")
+(load "rust.el")
+
 
 (cond
  ((string-equal system-type "windows-nt")
@@ -46,7 +47,7 @@
  '(line-number-mode nil)
  '(lsp-enable-file-watchers t)
  '(package-selected-packages
-   '(lsp-mode lsp-pyright lsp-treemacs lsp-ui actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode yaml-mode python-pylint pyenv-mode rainbow-mode js2-mode web-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
+   '(elixir-mode lsp-mode lsp-pyright lsp-treemacs lsp-ui actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode yaml-mode python-pylint pyenv-mode rainbow-mode js2-mode web-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
