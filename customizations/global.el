@@ -134,6 +134,12 @@
 (global-set-key (kbd "M-<left>") 'sp-backward-sexp)
 (global-set-key (kbd "M-d") 'sp-kill-sexp)
 (global-set-key (kbd "C-c l") 'goto-line)
+(global-set-key (kbd "C-c (") 'wrap-with-parens)
+(global-set-key (kbd "C-c {") 'wrap-with-braces)
+(global-set-key (kbd "C-c [") 'wrap-with-brackets)
+(global-set-key (kbd "C-c '") 'wrap-with-single-quotes)
+(global-set-key (kbd "C-c \"") 'wrap-with-double-quotes)
+(global-set-key (kbd "C-c `") 'wrap-with-back-quotes)
 
 ;;end custom keys
 

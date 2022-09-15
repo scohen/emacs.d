@@ -7,6 +7,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'exec-path "/Users/steve/Projects/elixir-ls/release")
 
+(load "smartparens-customizations.el")
 (load "global.el")
 (load "treemacs-config.el")
 (load "python-elpy.el")
