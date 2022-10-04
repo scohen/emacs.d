@@ -12,7 +12,7 @@
   (interactive)
   (delete-trailing-whitespace)
   (untabify (point-min) (point-max))
-  (lsp-format-buffer))
+  (elixir-format))
 
 
 (use-package elixir-mode
@@ -25,7 +25,6 @@
             (lambda()
               ;; "Kill Auto fill and burn the corpse"
               (auto-fill-mode -1)
-              (mmm-mode t)
               (company-mode)
               ;; idle highlight mode highlights the word under the cursor
               (idle-highlight-mode 1)
@@ -33,6 +32,7 @@
               (flycheck-mode)
               ))
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
+  (sp-local-pair 'elixir-mode "\"\"\"" "\"\"\"")
   :hook
   (elixir-mode . lsp)
   :custom

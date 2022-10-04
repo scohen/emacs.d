@@ -1,6 +1,5 @@
-(require 'web-mode)
-
 (use-package web-mode
+  :ensure eslint-fix
   :init
   ;; web mode for eex files
 
@@ -10,9 +9,11 @@
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
   (setq web-mode-engines-alist
-        '(("elixir"  ."\\.eex\\'"),
-          ("elixir" ."\\.leex\\'"),
-          ("css"     ."\\.sass\\'")
+        '(
+          ("elixir" . "\\.ex\\'" )
+          ("elixir" . "\\.eex\\'")
+          ("elixir" . "\\.leex\\'")
+          ("css"    . "\\.sass\\'")
           ))
 
   (setq web-mode-extra-constants '(("elixir" . ("for" "case"))))
