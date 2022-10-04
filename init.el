@@ -1,24 +1,27 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/customizations/")
-(add-to-list 'exec-path "/Users/steve/Projects/elixir-ls/release")
-
+(add-to-list 'exec-path "/Users/steve/bin")
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (load "global.el")
 (load "treemacs-config.el")
+(load "smartparens-custom.el")
 (load "python-elpy.el")
 (load "markdown.el")
-(load "go.el")
+;;(load "go.el")
 (load "magit-custom.el")
 (load "css.el")
 (load "javascript.el")
 (load "web.el")
-;; (load "mmm-mode-custom.el")
 (load "multiple-cursor-custom.el")
-(load "polymode-custom.el")
+;; disabling polymode because it confuses lsp
+;; (load "polymode-custom.el")
+
 (load "elixir.el")
 (load "yaml-custom.el")
 (load "rust.el")
@@ -49,7 +52,7 @@
  '(line-number-mode nil)
  '(lsp-enable-file-watchers t)
  '(package-selected-packages
-   '(flymake-easy flymake-elixir polymode lsp-pyright actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode python-pylint pyenv-mode rainbow-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
+   '(yasnippet smartparens-mode smartparens flymake-easy flymake-elixir polymode lsp-pyright actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode python-pylint pyenv-mode rainbow-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -16,6 +16,7 @@
 
 
 (use-package elixir-mode
+  :ensure t
   :init
   (remove-hook 'text-mode-hook 'turn-on-auto-fill)
   (add-hook 'elixir-format-hook 'set-formatter-exs)
@@ -23,12 +24,13 @@
             (lambda () (add-hook 'before-save-hook 'clean-elixir nil t)))
   (add-hook 'elixir-mode-hook
             (lambda()
+              (require 'smartparens-config)
               ;; "Kill Auto fill and burn the corpse"
               (auto-fill-mode -1)
               (company-mode)
+              (smartparens-mode)
               ;; idle highlight mode highlights the word under the cursor
               (idle-highlight-mode 1)
-              (smartparens-mode)
               (flycheck-mode)
               ))
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
@@ -38,5 +40,4 @@
   :custom
   (lsp-elixir-server-command '("~/bin/language_server.sh"))
   :config
-  (use-package smartparens :ensure t)
-  (use-package smartparens-config))
+  (use-package smartparens :ensure t))

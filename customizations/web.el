@@ -1,5 +1,6 @@
 (use-package web-mode
   :ensure eslint-fix
+  :ensure t
   :init
   ;; web mode for eex files
 

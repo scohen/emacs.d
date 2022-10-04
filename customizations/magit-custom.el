@@ -22,6 +22,8 @@
 
 ;; (require 'magit)
 
+
+
 (defun magit-display-buffer-pop-up-frame (buffer)
   (if (with-current-buffer buffer (eq major-mode 'magit-status-mode))
       (display-buffer buffer
@@ -30,4 +32,7 @@
                         (reusable-frames . t)))
     (magit-display-buffer-traditional buffer)))
 
-(setq magit-display-buffer-function #'magit-display-buffer-pop-up-frame)
+(use-package magit
+  :ensure t
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-pop-up-frame))

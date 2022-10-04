@@ -4,7 +4,6 @@
 (setq package-native-compile t)
 (ido-mode 1)
 (ido-everywhere 1)
-(projectile-mode)
 
 (menu-bar-mode 1)
 (tool-bar-mode 1)
@@ -17,17 +16,16 @@
                     :height 125 ;; measured in 1/10 of a pt.
                     :weight 'normal)
 
+(use-package projectile
+  :ensure t
+  :config
+  (setq projectile-enable-caching t))
 
-(setq projectile-enable-caching t)
 (setq text-mode-hook
 	'(lambda nil
 		(auto-fill-mode -1)))
 
 (turn-off-auto-fill)
-
-;; Split vertically
-;; (setq split-height-threshold nil)
-;; (setq split-width-threshold 0)
 
 (defun iwb ()
   "Indent the presently active buffer."
@@ -44,7 +42,7 @@
 (add-function :after after-focus-change-function #'save-all)
 
 (use-package exec-path-from-shell
-  :ensure
+  :ensure t
   :init
   (exec-path-from-shell-initialize))
 
@@ -59,6 +57,10 @@
 
 ;; end flycheck config
 
+
+;; yasnippet is required by company
+(use-package yasnippet
+  :ensure t)
 
 ;; Company configuration
 (use-package company
@@ -86,10 +88,6 @@
 
 
 
-(use-package lsp-imenu
-  :after lsp-mode
-  :hook
-  (lsp-after-open . lsp-enable-imenu))
 
 (use-package lsp-ui
   :ensure t
@@ -113,6 +111,10 @@
    ("M-," . lsp-find-references)
    ("<f7>" . lsp-format-buffer)
    )
+  :config
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024 4)) ;; 4mb
+  (setq lsp-idle-delay 0.725)
   :init
   '(lsp-mode))
 

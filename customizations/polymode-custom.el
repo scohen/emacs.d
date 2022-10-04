@@ -1,4 +1,5 @@
 (use-package polymode
+  :ensure t
   :mode ("\.ex$" . poly-elixir-web-mode)
   :config
 

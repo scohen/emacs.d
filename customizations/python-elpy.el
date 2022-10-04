@@ -1,4 +1,3 @@
-(require 'python-mode)
 
 ;; enable this when we switch to python > 3.6
 ;; (use-package blacken :ensure t)
@@ -15,7 +14,8 @@
   :init
   (elpy-enable))
 
-(use-package python-mode :ensure t
+(use-package python-mode
+  :ensure t
   :init
 
   (setq py-autopep8-options '("--max-line-length=120"))

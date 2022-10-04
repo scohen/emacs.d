@@ -18,7 +18,7 @@
 ;; dap mode is for debugging rust
 
 (use-package dap-mode
-  :ensure
+  :ensure t
   :config
   (dap-ui-mode)
   (dap-ui-controls-mode 1)
@@ -38,7 +38,7 @@
 
 
 (use-package rustic
-  :ensure
+  :ensure t
   :after  (projectile)
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)

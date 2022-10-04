@@ -2,6 +2,7 @@
   :ensure t)
 
 (use-package js2-mode
+  :ensure t
   :hook
   (js2-mode . lsp)
   :bind (:map js-mode-map
