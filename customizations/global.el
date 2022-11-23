@@ -16,8 +16,22 @@
                     :height 125 ;; measured in 1/10 of a pt.
                     :weight 'normal)
 
+(use-package ripgrep
+  :ensure t)
+
+(use-package diminish
+  :ensure t)
+
+(use-package delight
+  :ensure t)
+
+(use-package autorevert
+  :ensure t
+  :delight auto-revert-mode)
+
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :config
   (setq projectile-enable-caching t))
 
@@ -51,7 +65,9 @@
 
 (use-package flycheck
   :ensure t
+  :diminish flycheck-mode
   :init (global-flycheck-mode)
+  :diminish flycheck-mode
   :hook
   (prog-mode . flyspell-prog-mode))
 
@@ -115,6 +131,9 @@
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024 4)) ;; 4mb
   (setq lsp-idle-delay 0.725)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-modeline-diagnostics-enable t)
+  (setq lsp-modeline-code-actions-segments '(count icon name))
   :init
   '(lsp-mode))
 

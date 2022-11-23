@@ -21,6 +21,7 @@ respectively."
 
 (use-package smartparens
   :ensure t
+  :delight auto-revert-mode
   :diminish smartparens-mode
   :init
   (require 'smartparens-config)
