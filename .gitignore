@@ -36,3 +36,6 @@ forge-database.sqlite
 magithub
 vendor
 transient
+.dap-breakpoints
+elpy
+.mc-lists.el
