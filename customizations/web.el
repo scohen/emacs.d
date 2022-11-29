@@ -30,7 +30,7 @@
 
   :bind
   (
-   ("C-t w" . 'web-mode-element-wrap)))
+   ("C-c w w" . 'web-mode-element-wrap)))
 
 
 
