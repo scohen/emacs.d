@@ -35,4 +35,4 @@
 (use-package magit
   :ensure t
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-pop-up-frame))
+   (setq magit-display-buffer-function #'magit-display-buffer-pop-up-frame))

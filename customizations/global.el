@@ -73,7 +73,6 @@
 
 ;; end flycheck config
 
-
 ;; yasnippet is required by company
 (use-package yasnippet
   :ensure t)
@@ -103,39 +102,22 @@
   (global-company-mode 1))
 
 
-
-
-(use-package lsp-ui
+(use-package eglot
   :ensure t
-  :after lsp-mode
-  :diminish lsp-ui
-  :init (lsp-ui-mode)
-  :hook ((lsp-mode . lsp-ui-mode))
-  :config
-  (setq lsp-ui-peek-enable t)
-  (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-doc-enable t)
-  (setq lsp-enable-file-watchers nil)
-  )
-
-
-(use-package lsp-mode
-  :ensure t
-  :diminish lsp-mode
   :bind
-  (("M-." . lsp-find-definition)
-   ("M-," . lsp-find-references)
-   ("<f7>" . lsp-format-buffer)
-   )
-  :config
-  (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (* 1024 1024 4)) ;; 4mb
-  (setq lsp-idle-delay 0.725)
-  (setq lsp-enable-file-watchers nil)
-  (setq lsp-modeline-diagnostics-enable t)
-  (setq lsp-modeline-code-actions-segments '(count icon name))
-  :init
-  '(lsp-mode))
+  (:map eglot-mode-map
+        ("M-." . xref-find-definitions)
+        ("M-," . xref-find-references)
+        ("C-c l f" . eglot-format-buffer)
+        ("C-c l l" . flycheck-list-errors)
+        ("C-c l a" . lsp-execute-code-action)
+        ("C-c l r" . eglot-rename)
+        ("C-c l q" . eglot-reconnect)
+        ("C-c l Q" . eglot-shutdown)
+        ("<tab>" . tab-indent-or-complete)
+        ("TAB" . tab-indent-or-complete)
+        ))
+
 
 ;; end company config
 
@@ -163,6 +145,7 @@
   (/ (- (display-pixel-height) 120)
      (frame-char-height)))
 
+(setq inhibit-startup-screen t)
 ;; Max length guide
 ;; (setq fci-rule-column 100)
 ;; (setq fci-rule-color "#583856")

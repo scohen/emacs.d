@@ -1,6 +1,6 @@
 (use-package yaml-mode
   :ensure t
   :hook
-  (yaml . lsp)
+  (yaml . eglot-ensure)
   :init
-  (add-hook 'yaml-mode-hook #'lsp))
+  (add-hook 'yaml-mode-hook #'eglot-ensure))
