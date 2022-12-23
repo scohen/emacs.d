@@ -34,14 +34,17 @@
             (lambda () (add-hook 'before-save-hook 'clean-elixir nil t)))
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
 
+  :bind
+  (:map elixir-mode-map
+        ("C-c e f" . clean-elixir))
   :custom
-  (eglot-server-programs '((elixir-mode) "~/bin/language_server.sh"))
+   (eglot-server-programs '((elixir-mode) "~/bin/language_server.sh"))
   :hook
   (
    (elixir-mode . eglot-ensure)
-   (elixir-mode . sc/elixir-mode-hook)
+   (elixir-mode . sc/elixir-mode-hook))
 
-)
+
 
   :config
   (use-package smartparens :ensure t))

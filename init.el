@@ -15,6 +15,7 @@
 (load "markdown.el")
 ;;(load "go.el")
 (load "magit-custom.el")
+(load "json.el")
 (load "css.el")
 (load "javascript.el")
 (load "web.el")

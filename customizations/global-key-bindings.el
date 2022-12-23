@@ -1,3 +1,8 @@
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer :ignore-auto :noconfirm))
+
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;; custom keys
 (global-set-key (kbd "C-x /") 'comment-dwim)
@@ -10,7 +15,7 @@
 (global-set-key (kbd "M-<left>") 'sp-backward-sexp)
 (global-set-key (kbd "M-d") 'sp-kill-sexp)
 (global-set-key (kbd "C-c u") 'sp-unwrap-sexp)
-(global-set-key (kbd "C-c l") 'goto-line)
+(global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-c (") 'wrap-with-parens)
 (global-set-key (kbd "C-c {") 'wrap-with-braces)
 (global-set-key (kbd "C-c [") 'wrap-with-brackets)
@@ -19,6 +24,14 @@
 (global-set-key (kbd "C-c `") 'wrap-with-back-quotes)
 
 ;; multiple cursors
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c m l") 'mc/edit-lines)
+(global-set-key (kbd "C-c m >") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c m <") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c m a") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c m r") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-c m #") 'mc/insert-numbers)
+(global-set-key (kbd "C-c m [") 'set-rectangular-region-anchor)
+
+
+;; revert buffer
+(global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
