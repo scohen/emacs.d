@@ -104,6 +104,17 @@
 
 (use-package eglot
   :ensure t
+  :config
+
+  (add-to-list
+   'eglot-server-programs
+   `(elixir-mode . ("~/bin/language_server.sh")))
+
+
+  ;; (add-to-list
+  ;;  'eglot-server-programs
+  ;;  `(elixir-mode . ("~/Projects/ex_ls/_build/dev/rel/language_server/bin/language_server" "start")))
+
   :bind
   (:map eglot-mode-map
         ("M-." . xref-find-definitions)

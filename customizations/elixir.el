@@ -37,8 +37,6 @@
   :bind
   (:map elixir-mode-map
         ("C-c e f" . clean-elixir))
-  :custom
-   (eglot-server-programs '((elixir-mode) "~/bin/language_server.sh"))
   :hook
   (
    (elixir-mode . eglot-ensure)
