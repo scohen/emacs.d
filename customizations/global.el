@@ -106,14 +106,10 @@
   :ensure t
   :config
 
+
   (add-to-list
    'eglot-server-programs
-   `(elixir-mode . ("~/bin/language_server.sh")))
-
-
-  ;; (add-to-list
-  ;;  'eglot-server-programs
-  ;;  `(elixir-mode . ("~/Projects/ex_ls/_build/dev/rel/language_server/bin/language_server" "start")))
+   `(elixir-mode . ("~/Projects/lexical/_build/dev/rel/lexical/start_lexical.sh")))
 
   :bind
   (:map eglot-mode-map

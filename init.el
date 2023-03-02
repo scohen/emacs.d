@@ -52,8 +52,9 @@
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(treemacs treemacs-magit eglot yasnippet smartparens-mode smartparens flymake-easy flymake-elixir polymode lsp-pyright actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode python-pylint pyenv-mode rainbow-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
- '(show-paren-mode t))
+   '(use-package treemacs treemacs-magit eglot yasnippet smartparens-mode smartparens flymake-easy flymake-elixir polymode lsp-pyright actionscript-mode magit-diff-flycheck projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer flycheck-credo flycheck-mix jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode python-pylint pyenv-mode rainbow-mode scss-mode flycheck-rust dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
+ '(show-paren-mode t)
+ '(warning-suppress-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
