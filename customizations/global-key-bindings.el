@@ -23,6 +23,13 @@
 (global-set-key (kbd "C-c \"") 'wrap-with-double-quotes)
 (global-set-key (kbd "C-c `") 'wrap-with-back-quotes)
 
+
+;; sorting
+(global-set-key (kbd "C-c s c") 'sort-columns)
+(global-set-key (kbd "C-c s f") 'sort-fields)
+(global-set-key (kbd "C-c s l") 'sort-lines)
+
+
 ;; multiple cursors
 (global-set-key (kbd "C-c m l") 'mc/edit-lines)
 (global-set-key (kbd "C-c m >") 'mc/mark-next-like-this)
