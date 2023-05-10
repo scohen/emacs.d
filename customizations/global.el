@@ -60,19 +60,6 @@
   :init
   (exec-path-from-shell-initialize))
 
-
-;; flycheck config
-
-(use-package flycheck
-  :ensure t
-  :diminish flycheck-mode
-  :init (global-flycheck-mode)
-  :diminish flycheck-mode
-  :hook
-  (prog-mode . flyspell-prog-mode))
-
-;; end flycheck config
-
 ;; yasnippet is required by company
 (use-package yasnippet
   :ensure t)
@@ -116,8 +103,8 @@
         ("M-." . xref-find-definitions)
         ("M-," . xref-find-references)
         ("C-c l f" . eglot-format-buffer)
-        ("C-c l l" . flycheck-list-errors)
-        ("C-c l a" . lsp-execute-code-action)
+        ("C-c l l" . flymake-diagnostics-buffer-mode)
+        ("C-c l a" . eglot-code-actions)
         ("C-c l r" . eglot-rename)
         ("C-c l q" . eglot-reconnect)
         ("C-c l Q" . eglot-shutdown)

@@ -12,7 +12,7 @@
   (interactive)
   (delete-trailing-whitespace)
   (untabify (point-min) (point-max))
-  (elixir-format))
+  (eglot-format-buffer))
 
 
 (defun sc/elixir-mode-hook ()
@@ -22,8 +22,7 @@
   (company-mode)
   (smartparens-mode)
   ;; idle highlight mode highlights the word under the cursor
-  (idle-highlight-mode 1)
-  (flycheck-mode))
+  (idle-highlight-mode 1))
 
 (use-package elixir-mode
   :ensure t

@@ -14,29 +14,6 @@
          (directory-files-recursively project-root "Cargo.toml")))
     (vconcat found-cargo-files)))
 
-
-;; dap mode is for debugging rust
-
-(use-package dap-mode
-  :ensure t
-  :config
-  (dap-ui-mode)
-  (dap-ui-controls-mode 1)
-
-  (require 'dap-lldb)
-  (require 'dap-gdb-lldb)
-  ;; installs .extension/vscode
-  (dap-gdb-lldb-setup)
-  (dap-register-debug-template
-   "Rust::LLDB Run Configuration"
-   (list :type "lldb"
-         :request "launch"
-         :name "LLDB::Run"
-	 :gdbpath "rust-lldb"
-         :target nil
-         :cwd nil)))
-
-
 (use-package rustic
   :ensure t
   :after  (projectile)
@@ -59,7 +36,6 @@
   ;; no longer be necessary.
   (when buffer-file-name
     (setq-local buffer-save-without-query t)
-    (flycheck-mode)
     (company-mode)
     (auto-fill-mode -1)
     (idle-highlight-mode)
