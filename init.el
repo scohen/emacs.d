@@ -13,7 +13,6 @@
 (load "smartparens-custom.el")
 (load "python-elpy.el")
 (load "markdown.el")
-;;(load "go.el")
 (load "magit-custom.el")
 (load "json.el")
 (load "css.el")
@@ -52,9 +51,9 @@
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(treemacs-nerd-icons compat treemacs treemacs-icons-dired treemacs-projectile elixir-mode diminish eglot treemacs-magit yasnippet smartparens-mode smartparens polymode lsp-pyright actionscript-mode projectile-ripgrep treemacs-all-the-icons ansible ansible-vault company-ansible eslint-fix tide elpygen racer jinja2-mode htmlize alchemist erlang jedi-direx jedi magit-popup idle-highlight company-jedi virtualenvwrapper 0blayout magit-lfs magithub xref-js2 js2-refactor graphql-mode python-pylint pyenv-mode rainbow-mode scss-mode dockerfile-mode exec-path-from-shell cql-mode better-shell idle-highlight-mode hideshowvis hideshow-org cython-mode kotlin-mode fill-column-indicator column-marker markdown-preview-mode clojure-mode undo-tree neotree markdown-mode+ json-mode ido-ubiquitous goto-last-change flx-ido company-inf-ruby company-go color-theme better-defaults base16-theme auto-complete))
+   '(magit-filenotify rustic yaml-mode elixir-mode multiple-cursors web-mode eslint-fix rjsx-mode js2-mode prettier json-mode python-mode elpy py-autopep8 smartparens yasnippet use-package treemacs-projectile treemacs-magit treemacs-icons-dired ripgrep exec-path-from-shell diminish delight company))
  '(show-paren-mode t)
- '(warning-suppress-types '((comp))))
+ '(warning-suppress-types '((lsp-mode) (lsp-mode) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -62,4 +61,3 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'downcase-region 'disabled nil)
-(treemacs)

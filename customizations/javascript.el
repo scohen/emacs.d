@@ -4,7 +4,7 @@
 (use-package js2-mode
   :ensure t
   :hook
-  (js2-mode . eglot-ensure)
+  (js2-mode . lsp)
   :bind (:map js-mode-map
               ("M-." . nil)
               ("C-t w" . 'web-mode-element-wrap)
@@ -21,7 +21,7 @@
 
 :hook
 (
- (rjsx-mode . eglot-ensure)
+ (rjsx-mode . lsp)
  (rjsx-mode . prettier-mode)
  (rjsx-mode . smartparens-mode)
  (rjsx-mode . idle-highlight-mode)

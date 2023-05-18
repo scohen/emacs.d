@@ -16,6 +16,10 @@
                     :height 125 ;; measured in 1/10 of a pt.
                     :weight 'normal)
 
+(use-package idle-highlight-mode
+  :ensure t
+  :diminish idle-highlight-mode)
+
 (use-package ripgrep
   :ensure t)
 
@@ -36,8 +40,8 @@
   (setq projectile-enable-caching t))
 
 (setq text-mode-hook
-	'(lambda nil
-		(auto-fill-mode -1)))
+        '(lambda nil
+                (auto-fill-mode -1)))
 
 (turn-off-auto-fill)
 
@@ -59,6 +63,19 @@
   :ensure t
   :init
   (exec-path-from-shell-initialize))
+
+;; flycheck config
+
+(use-package flycheck
+  :ensure t
+  :diminish flycheck-mode
+  :init (global-flycheck-mode)
+  :diminish flycheck-mode
+  :hook
+  (prog-mode . flyspell-prog-mode))
+
+;; end flycheck config
+
 
 ;; yasnippet is required by company
 (use-package yasnippet
@@ -89,29 +106,53 @@
   (global-company-mode 1))
 
 
-(use-package eglot
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :diminish lsp-ui
+  :init (lsp-ui-mode)
+  :hook ((lsp-mode . lsp-ui-mode))
+  :config
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-doc-enable t)
+  )
+
+
+(use-package lsp-mode
   :ensure t
   :config
 
-
-  (add-to-list
-   'eglot-server-programs
-   `(elixir-mode . ("~/Projects/lexical/_build/dev/rel/lexical/start_lexical.sh")))
-
   :bind
-  (:map eglot-mode-map
-        ("M-." . xref-find-definitions)
-        ("M-," . xref-find-references)
-        ("C-c l f" . eglot-format-buffer)
+  (:map lsp-mode-map
+        ("M-." . lsp-find-definition)
+        ("M-," . lsp-find-references)
+        ("C-c l f" . lsp-format-buffer)
         ("C-c l l" . flymake-diagnostics-buffer-mode)
-        ("C-c l a" . eglot-code-actions)
-        ("C-c l r" . eglot-rename)
-        ("C-c l q" . eglot-reconnect)
-        ("C-c l Q" . eglot-shutdown)
+        ("C-c l a" . lsp-execute-code-action)
+        ("C-c l r" . lsp-rename)
+        ("C-c l q" . lsp-workspace-restart)
+        ("C-c l Q" . lsp-shutdown-workspace)
         ("<tab>" . tab-indent-or-complete)
         ("TAB" . tab-indent-or-complete)
-        ))
+        )
+  :config
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024 4)) ;; 4mb
+  (setq lsp-idle-delay 0.725)
+  ;; log io is only true for debugging lexical
+  ;; (setq lsp-log-io t)
+  (setq lsp-file-watch-threshold 5000)
+  (setq lsp-modeline-diagnostics-enable t)
+  (setq lsp-modeline-code-actions-segments '(count icon name))
 
+  :init
+  '(lsp-mode)
+  )
+
+
+(use-package lsp-treemacs
+  :ensure t)
 
 ;; end company config
 

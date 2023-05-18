@@ -1,14 +1,6 @@
 (use-package treemacs
   :ensure t
   :defer t
-  :init
-
-  (defun treemacs-ignored? (filename absolute-path)
-         (string-prefix-p ".", filename))
-
-  (with-eval-after-load 'treemacs
-    (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
-
   :config
 
   (progn
@@ -61,6 +53,8 @@
        (treemacs-git-mode 'deferred))
       (`(t . _)
        (treemacs-git-mode 'simple))))
+  :hook
+  (after-init . treemacs)
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)))
