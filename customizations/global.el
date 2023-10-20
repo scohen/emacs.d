@@ -8,7 +8,7 @@
 (menu-bar-mode 1)
 (tool-bar-mode 1)
 (toggle-scroll-bar -1)
-(global-linum-mode 1)
+(global-display-line-numbers-mode)
 (remove-hook 'coding-hook 'turn-on-hl-line-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (set-face-attribute 'default nil
@@ -36,8 +36,7 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :config
-  (setq projectile-enable-caching t))
+  :config)
 
 (setq text-mode-hook
         '(lambda nil
@@ -99,8 +98,8 @@
                          company-irony
                          company-jedi
                          company-yasnippet))
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 2)
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
   (setq company-echo-delay 0)
 
   (global-company-mode 1))
@@ -141,7 +140,7 @@
   (setq read-process-output-max (* 1024 1024 4)) ;; 4mb
   (setq lsp-idle-delay 0.725)
   ;; log io is only true for debugging lexical
-  ;; (setq lsp-log-io t)
+  (setq lsp-log-io t)
   (setq lsp-file-watch-threshold 5000)
   (setq lsp-modeline-diagnostics-enable t)
   (setq lsp-modeline-code-actions-segments '(count icon name))

@@ -40,7 +40,7 @@
         ("C-c e f" . clean-elixir))
 
   :custom
-  (lsp-elixir-server-command '("~/Projects/lexical/_build/dev/rel/lexical/start_lexical.sh"))
+  (lsp-elixir-server-command '("~/Projects/lexical/_build/dev/package/lexical/bin/start_lexical.sh"))
 
   :hook
   (
