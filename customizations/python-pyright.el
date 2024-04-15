@@ -9,10 +9,8 @@
 (use-package py-autopep8
   :ensure t)
 
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+(use-package lsp-pyright
+  :ensure t)
 
 (use-package python-mode
   :ensure t
@@ -22,7 +20,9 @@
   (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
   ;; (add-hook 'python-mode-hook 'blacken-mode)
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-  (add-hook 'python-mode-hook 'smartparens-mode)
-  (add-hook 'python-mode-hook 'idle-highlight-mode))
+  :hook
+  (python-mode . smartparens-mode)
+  (python-mode . idle-highlight-mode)
+  (python-mode . lsp-mode))
 
 (provide 'python-elpy)
