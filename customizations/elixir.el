@@ -18,37 +18,38 @@
 (defun sc/elixir-mode-hook ()
   (require 'smartparens-config)
   ;; "Kill Auto fill and burn the corpse"
-  (lsp-mode)
   (auto-fill-mode -1)
-  (company-mode)
-  (smartparens-mode)
   ;; idle highlight mode highlights the word under the cursor
-  (idle-highlight-mode 1))
+  ;; (idle-highlight-mode 1)
+  )
 
 
 (defun sc/set-web-mode-engine ()
   (web-mode-set-engine "elixir"))
 
-(use-package elixir-mode
+(use-package elixir-ts-mode
   :ensure t
+  :load-path "~/Projects/elixir-ts-mode"
+
   :init
   (remove-hook 'text-mode-hook 'turn-on-auto-fill)
   (add-hook 'web-mode-hook (lambda () (web-mode-set-engine "elixir")))
 
   :bind
-  (:map elixir-mode-map
-        ("C-c e f" . clean-elixir))
+  (:map elixir-ts-mode-map ("C-c e f" . sc/clean-elixir))
 
   :custom
   (lsp-elixir-server-command '("~/Projects/lexical/_build/dev/package/lexical/bin/start_lexical.sh"))
 
   :hook
   (
-   (elixir-mode . sc/elixir-mode-hook)
+   (elixir-ts-mode . idle-highlight-mode)
+   (elixir-ts-mode . company-mode)
+   (elixir-ts-mode . lsp-mode)
+   (elixir-ts-mode . smartparens-mode)
+   (elixir-ts-mode . sc/elixir-mode-hook)
    (elixir-format . sc/set-formatter-exs)
    (web-mode . sc/set-web-mode-engine)
-   (before-save . sc/clean-elixir))
-  :custom
-  (require 'smartparens))
+   (before-save . sc/clean-elixir)))
 
 (provide 'elixir)

@@ -2,6 +2,7 @@
 
 ;;; Code:
 (setq package-native-compile t)
+(setq treesit-font-lock-level 4)
 (ido-mode 1)
 (ido-everywhere 1)
 
@@ -15,6 +16,8 @@
                     :family "Office Code Pro"
                     :height 125 ;; measured in 1/10 of a pt.
                     :weight 'normal)
+
+(use-package tree-sitter-langs :ensure t)
 
 (use-package idle-highlight-mode
   :ensure t
@@ -80,6 +83,9 @@
 (use-package yasnippet
   :ensure t)
 
+(use-package yasnippet-snippets
+  :ensure t)
+
 ;; Company configuration
 (use-package company
   :ensure t
@@ -131,7 +137,9 @@
         ("C-c l a" . lsp-execute-code-action)
         ("C-c l r" . lsp-rename)
         ("C-c l q" . lsp-workspace-restart)
-        ("C-c l Q" . lsp-shutdown-workspace)
+        ("C-c l Q" . lsp-workspace-shutdown)
+        ("C-c l s" . lsp-treemacs-symbols)
+        ("C-c l S" . helm-lsp-workspace-symbol)
         ("<tab>" . tab-indent-or-complete)
         ("TAB" . tab-indent-or-complete)
         )
