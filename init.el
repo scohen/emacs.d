@@ -48,9 +48,8 @@
  '(custom-safe-themes
    '("ce3ffec16fa28e2ae33fde72c662a256ed93a35358ce11076fc7c9f6d5164ef6" default))
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(line-number-mode nil)
  '(package-selected-packages
-   '(lsp-pyright rust-mode helm helm-lsp lsp-mode tree-sitter-langs magit-filenotify rustic yaml-mode multiple-cursors web-mode eslint-fix rjsx-mode js2-mode prettier json-mode python-mode elpy py-autopep8 smartparens yasnippet use-package treemacs-projectile treemacs-magit treemacs-icons-dired ripgrep diminish delight))
+   '(lsp-pyright rust-mode helm helm-lsp lsp-mode tree-sitter-langs magit-filenotify rustic yaml-mode multiple-cursors web-mode eslint-fix rjsx-mode js2-mode prettier json-mode elpy py-autopep8 smartparens yasnippet use-package treemacs-projectile treemacs-magit treemacs-icons-dired ripgrep diminish delight))
  '(show-paren-mode t)
  '(warning-suppress-types '((lsp-mode) (lsp-mode) (comp))))
 (custom-set-faces

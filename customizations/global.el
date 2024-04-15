@@ -8,6 +8,8 @@
 
 (menu-bar-mode 1)
 (tool-bar-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
 (toggle-scroll-bar -1)
 (global-display-line-numbers-mode)
 (remove-hook 'coding-hook 'turn-on-hl-line-mode)
