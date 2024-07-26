@@ -3,8 +3,9 @@
 ;;; Code:
 (setq package-native-compile t)
 (setq treesit-font-lock-level 4)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (ido-mode 1)
-(ido-everywhere 1)
 
 (menu-bar-mode 1)
 (tool-bar-mode 1)
@@ -19,13 +20,14 @@
                     :height 125 ;; measured in 1/10 of a pt.
                     :weight 'normal)
 
+(use-package string-inflection :ensure t)
 (use-package tree-sitter-langs :ensure t)
 
 (use-package idle-highlight-mode
   :ensure t
   :diminish idle-highlight-mode)
 
-(use-package ripgrep
+(use-package rg
   :ensure t)
 
 (use-package diminish
@@ -43,11 +45,33 @@
   :diminish projectile-mode
   :config)
 
+;; Org mode
+(use-package org-bullets
+  :ensure t
+  :hook (org-mode . org-bullets-mode))
+
+(setq org-todo-keywords
+      '((sequence "TODO" "IN PROGRESS" "PR" "APPROVED" "|" "DONE")))
+(use-package ob-elixir
+  :ensure t)
+
+(require 'ob-elixir)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (emacs-lisp . t)
+   (elixir . t)
+   (org . t)
+   (ditaa . t)))
+;;; end org mode
+
 (setq text-mode-hook
         '(lambda nil
                 (auto-fill-mode -1)))
 
 (turn-off-auto-fill)
+
+
 
 (defun iwb ()
   "Indent the presently active buffer."
@@ -120,9 +144,10 @@
   :init (lsp-ui-mode)
   :hook ((lsp-mode . lsp-ui-mode))
   :config
-  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-enable nil)
   (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
   )
 
 
@@ -142,6 +167,7 @@
         ("C-c l Q" . lsp-workspace-shutdown)
         ("C-c l s" . lsp-treemacs-symbols)
         ("C-c l S" . helm-lsp-workspace-symbol)
+        ("C-c <tab>" . helm-lsp-workspace-symbol)
         ("<tab>" . tab-indent-or-complete)
         ("TAB" . tab-indent-or-complete)
         )

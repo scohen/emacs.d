@@ -122,6 +122,7 @@
    `(neo-root-dir-face ((,class (:foreground ,pink))))
    `(neo-dir-link-face ((,class (:foreground "#B49672"))))
    `(neo-file-link-face ((,class (:foreground "wheat"))))
+   `(org-todo ((,class (:foreground ,contrasty-red :weight bold))))
    `(outline-1 ((,class (:foreground "SkyBlue1"))))
    `(outline-2 ((,class (:foreground "CadetBlue1"))))
    `(outline-3 ((,class (:foreground "LightSteelBlue1"))))

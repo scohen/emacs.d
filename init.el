@@ -46,10 +46,10 @@
  '(company-idle-delay 0.1)
  '(custom-enabled-themes '(glacial-complete))
  '(custom-safe-themes
-   '("ce3ffec16fa28e2ae33fde72c662a256ed93a35358ce11076fc7c9f6d5164ef6" default))
+   '("83470e2d51dce231f40d4c112db3ceceb5438c66c3de9b0c136972c23ab7bea2" "1a188b325118ce3a60cef0d737d29d1fadc709fcd21b156c88a7dd74b651eaab" "ce3ffec16fa28e2ae33fde72c662a256ed93a35358ce11076fc7c9f6d5164ef6" default))
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(package-selected-packages
-   '(lsp-pyright rust-mode helm helm-lsp lsp-mode tree-sitter-langs magit-filenotify rustic yaml-mode multiple-cursors web-mode eslint-fix rjsx-mode js2-mode prettier json-mode elpy py-autopep8 smartparens yasnippet use-package treemacs-projectile treemacs-magit treemacs-icons-dired ripgrep diminish delight))
+   '(rg string-inflection elixir-ts-mode lsp-treemacs lsp-ui lsp-pyright rust-mode helm helm-lsp lsp-mode tree-sitter-langs magit-filenotify rustic yaml-mode multiple-cursors web-mode eslint-fix rjsx-mode js2-mode prettier json-mode elpy py-autopep8 smartparens yasnippet use-package treemacs-projectile treemacs-magit treemacs-icons-dired diminish delight))
  '(show-paren-mode t)
  '(warning-suppress-types '((lsp-mode) (lsp-mode) (comp))))
 (custom-set-faces

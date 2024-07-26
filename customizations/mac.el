@@ -2,7 +2,7 @@
       mac-command-key-is-meta t
       mac-command-modifier 'meta
       mac-control-modifier 'control
-      mac-option-modifier 'none)
+      mac-option-modifier 'super)
 
 (eval-after-load "flyspell"
   '(progn
